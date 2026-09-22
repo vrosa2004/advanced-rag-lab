@@ -21,7 +21,7 @@ advanced-rag-lab/
 Demonstra o cálculo de **Similaridade do Cosseno** utilizando a biblioteca `numpy`. Aborda o uso de produto escalar (`np.dot`) e cálculo de magnitude (`np.linalg.norm`) com processamento vetorizado, simulando a lógica de otimização matemática utilizada por bancos de dados vetoriais em larga escala.
 
 ### 2. Exercício 2: A Matemática "Na Mão" (`dia1/exercicio_2/main.py`)
-Desconstrói a fórmula matemática do cosseno ($A \cdot B / (\vert{}\vert{}A\vert{}\vert{} \times \vert{}\vert{}B\vert{}\vert{})$) utilizando apenas a biblioteca nativa `math` do Python. O código itera eixo por eixo vetorial para fixar o conceito de aproximação angular no espaço multidimensional.
+Desconstrói a fórmula matemática do cosseno ( $$A \cdot B / (||A|| \times ||B||)$$ ) utilizando apenas a biblioteca nativa `math` do Python. O código itera eixo por eixo vetorial para fixar o conceito de aproximação angular no espaço multidimensional.
 
 ### 3. Exercício Final: Busca Semântica Real (`dia1/exercicio_final/main.py`)
 Implementa um pipeline de *Retrieval* funcional e semântico.
