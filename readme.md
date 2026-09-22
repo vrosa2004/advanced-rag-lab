@@ -1,54 +1,65 @@
-# Advanced RAG Lab 🔬
+# 🔬 Advanced RAG Lab
 
-Este repositório contém as provas de conceito (PoCs) e experimentações práticas do **Plano Intensivo de Estudos em RAG Avançado**. O objetivo deste laboratório é construir um pipeline de *Retrieval-Augmented Generation* (RAG) estruturado, evoluindo dos fundamentos matemáticos de busca vetorial até a orquestração híbrida com ranqueamento e observabilidade.
+Repositório dedicado ao laboratório prático e estudo intensivo de **Retrieval-Augmented Generation (RAG) Avançado**. O objetivo deste projeto é construir, etapa por etapa, um ecossistema completo de recuperação de informação, passando por buscas semânticas, lexicais, ranqueamento, geração embasada e observabilidade.
 
-## 🗂️ Estrutura do Projeto - Dia 1: Vetores e Embeddings
+## 🏗️ Arquitetura do Pipeline
 
-A primeira etapa do laboratório foca em desmistificar a matemática por trás da busca semântica (Similaridade do Cosseno) e aplicar modelos de *Embeddings* para recuperação de informações (Retrieval) em memória.
+O fluxo de processamento de ponta a ponta implementado neste laboratório segue a arquitetura abaixo:
 
 ```text
-advanced-rag-lab/
-└── dia1/
-    ├── exercicio_1/
-    │   └── main.py       # Similaridade do Cosseno com NumPy
-    ├── exercicio_2/
-    │   └── main.py       # Similaridade do Cosseno em Python Nativo (Math)
-    └── exercicio_final/
-        └── main.py       # Busca Semântica Real com Sentence-Transformers
+QUERY → EMBEDDING → [pgvector + BM25] → RRF → RERANKER → CONTEXT → LLM → RESPOSTA
+                               ↓                                      ↓
+                           Retrieval                              Generation
+                               ↓                                      ↓
+                             Ragas                                 Langfuse
 ```
+## 🛠️ Stack Tecnológica
 
-### 1. Exercício 1: NumPy e Álgebra Linear (`dia1/exercicio_1/main.py`)
-Demonstra o cálculo de **Similaridade do Cosseno** utilizando a biblioteca `numpy`. Aborda o uso de produto escalar (`np.dot`) e cálculo de magnitude (`np.linalg.norm`) com processamento vetorizado, simulando a lógica de otimização matemática utilizada por bancos de dados vetoriais em larga escala.
+* **Busca e Vetorização:** `numpy`, `sentence-transformers`, PostgreSQL com extensão `pgvector`.
+* **Busca Lexical:** Algoritmo BM25 e Full Text Search.
+* **Reranking:** Modelos Cross-Encoder e bi-encoder.
+* **Orquestração de LLMs:** LiteLLM (Proxy server).
+* **Avaliação de RAG:** Framework `ragas` (Context Precision, Context Recall, Faithfulness, Answer Relevance).
+* **Observabilidade:** Plataforma `langfuse` para tracing, latência, tokens e custos.
 
-### 2. Exercício 2: A Matemática "Na Mão" (`dia1/exercicio_2/main.py`)
-Desconstrói a fórmula matemática do cosseno ( $$A \cdot B / (||A|| \times ||B||)$$ ) utilizando apenas a biblioteca nativa `math` do Python. O código itera eixo por eixo vetorial para fixar o conceito de aproximação angular no espaço multidimensional.
+## 🗺️ Índice de Estudos (Roadmap)
 
-### 3. Exercício Final: Busca Semântica Real (`dia1/exercicio_final/main.py`)
-Implementa um pipeline de *Retrieval* funcional e semântico.
-* Converte strings de texto em embeddings de 384 dimensões.
-* Utiliza o modelo `paraphrase-multilingual-MiniLM-L12-v2` da HuggingFace para contornar a barreira do idioma e garantir alta precisão no agrupamento de termos em Português.
-* Calcula o *score* de similaridade entre a query do usuário e uma base de documentos fictícia, gerando um ranking (Top-K) que prioriza o significado em vez de correspondências de palavras exatas.
+Este projeto está dividido em pequenos módulos diários. Cada pasta contém o seu próprio `README.md` com os conceitos aprendidos e os comandos de execução dos scripts.
 
-## 🚀 Como Executar
+### Semana 1: Retrieval (Vector, Busca Lexical e Metadados)
+* [x] Dia 1: Vetores e embeddings.
+* [ ] Dia 2: Embeddings na prática.
+* [ ] Dia 3: PostgreSQL + pgvector.
+* [ ] Dia 4: Índices de busca aproximada (HNSW e IVFFlat).
+* [ ] Dia 5: Metadata filtering (Pre-filtering e Post-filtering).
+* [ ] Dia 6: BM25 e busca lexical.
+* [ ] Dia 7: Mini projeto de retrieval paralelo.
 
-### Pré-requisitos
-Certifique-se de ter o Python (versão 3.8+) instalado em sua máquina. Recomenda-se a criação de um ambiente virtual (`venv`) para isolar as dependências do laboratório.
+### Semana 2: Hybrid Search, Reranking e Generation
+* [ ] Dia 8: Algoritmo RRF (Reciprocal Rank Fusion).
+* [ ] Dia 9: Hybrid Search na prática.
+* [ ] Dia 10: Bi-encoder vs Cross-encoder e Reranking.
+* [ ] Dia 11: Reranker na prática (Refinamento de candidatos).
+* [ ] Dia 12: Grounded Generation com citações.
+* [ ] Dia 13: LiteLLM proxy e roteamento.
+* [ ] Dia 14: RAG completo (Integração ponta a ponta).
 
-### Instalação das Dependências
-Execute o comando abaixo no seu terminal para instalar as bibliotecas necessárias para os 3 exercícios:
+### Semana 3: Avaliação e Observabilidade
+* [ ] Dia 15: Métricas RAG teóricas.
+* [ ] Dia 16: Avaliação com LLM-as-a-Judge usando Ragas[cite: 5].
+* [ ] Dia 17: Instrumentação e traces com Langfuse[cite: 5].
+* [ ] Dia 18: Concorrência com Async/Await e revisão final[cite: 5].
+
+## 🚀 Como Iniciar o Projeto Base
+
+Clone este repositório e instale as dependências globais na sua máquina:
 
 ```bash
-pip install numpy sentence-transformers
+git clone [https://github.com/SEU_USUARIO/advanced-rag-lab.git](https://github.com/SEU_USUARIO/advanced-rag-lab.git)
+cd advanced-rag-lab
+
+# Crie um ambiente virtual (recomendado)
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
 ```
-
-### Rodando os Scripts
-Navegue até o diretório do exercício que deseja testar e execute o arquivo principal:
-
-```bash
-# Exemplo para rodar a Busca Semântica Real
-cd dia1/exercicio_final
-python main.py
-```
-
-## 🧠 Próximos Passos
-O próximo avanço arquitetural do projeto consiste em persistir esses cálculos vetorizados em um **Banco de Dados Vetorial** (utilizando PostgreSQL + `pgvector`), permitindo consultas eficientes em alto volume e a aplicação de filtros lógicos (Metadata Pre-filtering).
