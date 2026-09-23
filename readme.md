@@ -46,9 +46,9 @@ Este projeto está dividido em pequenos módulos diários. Cada pasta contém o 
 
 ### Semana 3: Avaliação e Observabilidade
 * [ ] Dia 15: Métricas RAG teóricas.
-* [ ] Dia 16: Avaliação com LLM-as-a-Judge usando Ragas[cite: 5].
-* [ ] Dia 17: Instrumentação e traces com Langfuse[cite: 5].
-* [ ] Dia 18: Concorrência com Async/Await e revisão final[cite: 5].
+* [ ] Dia 16: Avaliação com LLM-as-a-Judge usando Ragas.
+* [ ] Dia 17: Instrumentação e traces com Langfuse.
+* [ ] Dia 18: Concorrência com Async/Await e revisão final.
 
 ## 🚀 Como Iniciar o Projeto Base
 
