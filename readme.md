@@ -28,8 +28,8 @@ Este projeto está dividido em pequenos módulos diários. Cada pasta contém o 
 
 ### Semana 1: Retrieval (Vector, Busca Lexical e Metadados)
 * [x] Dia 1: Vetores e embeddings.
-* [ ] Dia 2: Embeddings na prática.
-* [ ] Dia 3: PostgreSQL + pgvector.
+* [x] Dia 2: Embeddings na prática.
+* [x] Dia 3: PostgreSQL + pgvector.
 * [ ] Dia 4: Índices de busca aproximada (HNSW e IVFFlat).
 * [ ] Dia 5: Metadata filtering (Pre-filtering e Post-filtering).
 * [ ] Dia 6: BM25 e busca lexical.
