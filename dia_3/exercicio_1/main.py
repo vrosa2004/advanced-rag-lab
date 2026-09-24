@@ -21,15 +21,10 @@ try:
     ]
 
     for doc in documentos:
-        # Valida se o documento já existe no banco
-        valida = repository.select_document(conn, doc)
-        if valida:
-            continue
-        else:
-            # Transforma o texto em vetor
-            vetor = model.encode(doc) 
-            # Salva no banco via Repository
-            repository.insert_document(conn, doc, vetor)
+        # Transforma o texto em vetor
+        vetor = model.encode(doc) 
+        # Salva no banco via Repository
+        repository.insert_document(conn, doc, vetor)
 
     # --- HORA DA BUSCA (RETRIEVAL) ---
     pergunta_usuario = "Como configuro o email da empresa no meu celular?"
