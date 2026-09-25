@@ -32,7 +32,7 @@ Este projeto está dividido em pequenos módulos diários. Cada pasta contém o 
 * [x] Dia 3: PostgreSQL + pgvector.
 * [x] Dia 4: Índices de busca aproximada (HNSW e IVFFlat).
 * [x] Dia 5: Metadata filtering (Pre-filtering e Post-filtering).
-* [ ] Dia 6: BM25 e busca lexical.
+* [x] Dia 6: BM25 e busca lexical.
 * [ ] Dia 7: Mini projeto de retrieval paralelo.
 
 ### Semana 2: Hybrid Search, Reranking e Generation
